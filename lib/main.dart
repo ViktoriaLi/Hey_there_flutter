@@ -31,6 +31,7 @@ class HeyTherePage extends StatefulWidget {
 class HeyTherePageState extends State<HeyTherePage> {
   int _counter = 0;
   String _greeting = "Hey there";
+  var color = Colors.teal[50];
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -50,36 +51,42 @@ class HeyTherePageState extends State<HeyTherePage> {
 
   Widget _Content(String greeting) {
     return GestureDetector(
-          onTap: () {
-            setState(() {
-              print('MyButton was tapped!');
-              _incrementCounter();
-            });
-          },
-          child: buildContainer (greeting),
-        );
-      }
+      onTap: () {
+        setState(() {
+          print('MyButton was tapped!');
+          color = Colors
+              .primaries[math.Random().nextInt(Colors.primaries.length)];
+          //_incrementCounter();
+        });
+      },
+      child: buildContainer(greeting),
+    );
+  }
 
-      Container buildContainer (String greeting) {
-        var color; //= Colors.primaries[math.Random().nextInt(Colors.primaries.length)].withOpacity(0.5);
-        //Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-        _counter == 0 ? color = Colors.teal[50] : color = Colors.primaries[math.Random().nextInt(Colors.primaries.length)].withOpacity(0.5);
-        return buildContainerWithColor(color, greeting);
-      }
+  Container buildContainer(String greeting) {
+    //var color; //= Colors.primaries[math.Random().nextInt(Colors.primaries.length)].withOpacity(0.5);
+    //Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    /*_counter == 0
+        ? color = Colors.teal[50]
+        : color = Colors
+            .primaries[math.Random().nextInt(Colors.primaries.length)]
+            .withOpacity(0.5);*/
+    return buildContainerWithColor(greeting);
+  }
 
-      Container buildContainerWithColor(Color color, String greeting) {
-        return Container(
-          color: color,
-          width: double.infinity,
-          height: double.infinity,
-          child: Center (
-            child: Text(
-              '$greeting',
-              style: TextStyle(
-                fontSize: 44,
-              ),
-              ),
-            ),
-          );
-      }
+  Container buildContainerWithColor(String greeting) {
+    return Container(
+      color: color,
+      width: double.infinity,
+      height: double.infinity,
+      child: Center(
+        child: Text(
+          '$greeting',
+          style: TextStyle(
+            fontSize: 44,
+          ),
+        ),
+      ),
+    );
+  }
 }
