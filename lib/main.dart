@@ -34,19 +34,7 @@ class HeyTherePageState extends State<HeyTherePage> {
   int _counter = 0;
   String greeting = "Hey there";
   var color = Colors.teal[50];
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-      print("counter");
-    });
-  }
-
-  void _openCV() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CVPage()),
-    );
-  }
+  var bonusButton = null;
 
   @override
   Widget build(BuildContext context) {
@@ -54,16 +42,12 @@ class HeyTherePageState extends State<HeyTherePage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
-          Ink(
+          Container(
             decoration: const ShapeDecoration(
-              color: Colors.black,
+              color: Colors.limeAccent,
               shape: CircleBorder(),
             ),
-            child: IconButton(
-              icon: Icon(Icons.android),
-              color: Colors.white,
-              onPressed: _openCV,
-            ),
+            child: bonusButton,
           ),
         ],
       ),
@@ -78,18 +62,14 @@ class HeyTherePageState extends State<HeyTherePage> {
           print('MyButton was tapped!');
           color =
               Colors.primaries[math.Random().nextInt(Colors.primaries.length)];
-          //_incrementCounter();
+          _showButton();
         });
       },
-      child: buildContainer(),
+      child: _buildContainerWithColor(),
     );
   }
 
-  Container buildContainer() {
-    return buildContainerWithColor();
-  }
-
-  Container buildContainerWithColor() {
+  Container _buildContainerWithColor() {
     return Container(
       color: color,
       width: double.infinity,
@@ -103,5 +83,30 @@ class HeyTherePageState extends State<HeyTherePage> {
         ),
       ),
     );
+  }
+
+  void _openCV() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CVPage()),
+    );
+  }
+
+  void _showButton() {
+    setState(() {
+      _counter++;
+      if (_counter % 3 == 0) {
+        bonusButton = Container(
+          child: IconButton(
+            icon: Icon(Icons.face),
+            iconSize: 32,
+            color: Colors.black,
+            onPressed: _openCV,
+          ),
+        );
+      } else {
+        bonusButton = null;
+      }
+    });
   }
 }

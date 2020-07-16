@@ -1,47 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class ContactLinks {
-  var color;
-  var link;
-  var icon;
-
-  ContactLinks(Color color, String link, Icon icon) {
-    this.color = color;
-    this.link = link;
-    this.link = link;
-  }
-}
+import 'OpenUrl.dart';
 
 class CVPage extends StatelessWidget {
-  var links = [
-    ContactLinks(
-        Colors.red, 'https://flutter.dev', Icon(Icons.accessibility_new)),
-    ContactLinks(Colors.blue, 'https://flutter.dev', Icon(Icons.add_a_photo))
+  var texts = [
+    '1 year non-commercial experience in iOS development',
+    '1 year with C programming',
+    '2 years in software testing',
+    'Interested to grow native and cross-platform mobile development technologies'
   ];
 
-  _openLinkedin() {
-    const url = 'https://www.linkedin.com/in/viktoriali/';
-    _openURL(url);
-  }
-
-  _openGithub() {
-    const url = 'https://github.com/ViktoriaLi';
-    _openURL(url);
-  }
-
-  _openPortfolio() {
-    const url = 'https://viktoriali.github.io/';
-    _openURL(url);
-  }
-
-  _openURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  var urlOpener = OpenUrl();
 
   @override
   Widget build(BuildContext context) {
@@ -49,35 +18,31 @@ class CVPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Just explored widgets"),
       ),
-      body: MyList(),
+      body: Information(),
     );
   }
 
-  Widget MyList() {
+  Widget Information() {
     return Container(
       padding: const EdgeInsets.all(8),
       child: Column(
         children: <Widget>[
-          Container(
-            height: 250,
-            child: Image(
-              image: AssetImage('images/myPhoto.jpg'),
-            ),
-            padding: const EdgeInsets.only(bottom: 20),
-          ),
+          MyPhoto(),
           SocialButtons(),
-          Container(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Text(
-              'Summary',
-              style: TextStyle(
-                fontSize: 24,
-              ),
-            ),
-          ),
+          Summary(),
           ExperienceList(),
         ],
       ),
+    );
+  }
+
+  Widget MyPhoto() {
+    return Container(
+      height: 250,
+      child: Image(
+        image: AssetImage('images/myPhoto.jpg'),
+      ),
+      padding: const EdgeInsets.only(bottom: 20),
     );
   }
 
@@ -89,13 +54,13 @@ class CVPage extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: Image.asset('images/github_icon.png'),
-            onPressed: _openGithub,
+            onPressed: urlOpener.openGithub,
             iconSize: 48,
             color: Colors.white,
           ),
           IconButton(
             icon: Image.asset('images/linkedin_icon.png'),
-            onPressed: _openLinkedin,
+            onPressed: urlOpener.openLinkedin,
             iconSize: 48,
           ),
           Ink(
@@ -105,7 +70,7 @@ class CVPage extends StatelessWidget {
             ),
             child: IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: _openPortfolio,
+              onPressed: urlOpener.openPortfolio,
               iconSize: 30,
               color: Colors.white,
             ),
@@ -115,12 +80,17 @@ class CVPage extends StatelessWidget {
     );
   }
 
-  var texts = [
-    '1 year non-commercial experience in iOS development',
-    '1 year with C programming',
-    '2 years in software testing',
-    'Interested to grow native and cross-platform mobile development technologies'
-  ];
+  Widget Summary() {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: Text(
+        'Summary',
+        style: TextStyle(
+          fontSize: 24,
+        ),
+      ),
+    );
+  }
 
   Widget ExperienceList() {
     return Expanded(
