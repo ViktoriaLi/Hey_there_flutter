@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'CVPage.dart';
+
 void main() {
   runApp(HeyThereApp());
 }
@@ -30,7 +32,7 @@ class HeyTherePage extends StatefulWidget {
 
 class HeyTherePageState extends State<HeyTherePage> {
   int _counter = 0;
-  String _greeting = "Hey there";
+  String greeting = "Hey there";
   var color = Colors.teal[50];
   void _incrementCounter() {
     setState(() {
@@ -39,42 +41,55 @@ class HeyTherePageState extends State<HeyTherePage> {
     });
   }
 
+  void _openCV() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CVPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          Ink(
+            decoration: const ShapeDecoration(
+              color: Colors.black,
+              shape: CircleBorder(),
+            ),
+            child: IconButton(
+              icon: Icon(Icons.android),
+              color: Colors.white,
+              onPressed: _openCV,
+            ),
+          ),
+        ],
       ),
-      body: _Content(_greeting),
+      body: _Content(),
     );
   }
 
-  Widget _Content(String greeting) {
+  Widget _Content() {
     return GestureDetector(
       onTap: () {
         setState(() {
           print('MyButton was tapped!');
-          color = Colors
-              .primaries[math.Random().nextInt(Colors.primaries.length)];
+          color =
+              Colors.primaries[math.Random().nextInt(Colors.primaries.length)];
           //_incrementCounter();
         });
       },
-      child: buildContainer(greeting),
+      child: buildContainer(),
     );
   }
 
-  Container buildContainer(String greeting) {
-    //var color; //= Colors.primaries[math.Random().nextInt(Colors.primaries.length)].withOpacity(0.5);
-    //Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-    /*_counter == 0
-        ? color = Colors.teal[50]
-        : color = Colors
-            .primaries[math.Random().nextInt(Colors.primaries.length)]
-            .withOpacity(0.5);*/
-    return buildContainerWithColor(greeting);
+  Container buildContainer() {
+    return buildContainerWithColor();
   }
 
-  Container buildContainerWithColor(String greeting) {
+  Container buildContainerWithColor() {
     return Container(
       color: color,
       width: double.infinity,
