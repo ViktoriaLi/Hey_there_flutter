@@ -4,10 +4,10 @@ import 'OpenUrl.dart';
 
 class CVPage extends StatelessWidget {
   var texts = [
-    '1 year non-commercial experience in iOS development',
-    '1 year with C programming',
-    '2 years in software testing',
-    'Interested to grow native and cross-platform mobile development technologies'
+    'I have 1 year of non-commercial experience in iOS development, also passed internship and working on a freelance project',
+    '1-year experience with C programming',
+    '2 years in software testing in commercial projects',
+    'Currently, I\'m interested to grow as professional in native or cross-platform mobile development'
   ];
 
   var urlOpener = OpenUrl();
@@ -16,7 +16,10 @@ class CVPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Just explored widgets"),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        title: Text("Short review", style: TextStyle(color: Colors.white)),
       ),
       body: Information(),
     );
@@ -85,9 +88,7 @@ class CVPage extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: Text(
         'Summary',
-        style: TextStyle(
-          fontSize: 24,
-        ),
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -113,7 +114,7 @@ class CVPage extends StatelessWidget {
     return Container(
       height: 50,
       color: Colors.amber[100],
-      child: new Center(child: Text(text)),
+      child: new Center(child: Text(text, style: TextStyle(fontSize: 20))),
     );
   }
 }

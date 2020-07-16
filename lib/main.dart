@@ -13,7 +13,7 @@ class HeyThereApp extends StatelessWidget {
     return MaterialApp(
       title: 'Hey there!',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HeyTherePage(title: 'Welcome Page'),
@@ -40,11 +40,11 @@ class HeyTherePageState extends State<HeyTherePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title, style: TextStyle(color: Colors.white)),
         actions: [
           Container(
             decoration: const ShapeDecoration(
-              color: Colors.limeAccent,
+              color: Colors.white,
               shape: CircleBorder(),
             ),
             child: bonusButton,
@@ -60,8 +60,9 @@ class HeyTherePageState extends State<HeyTherePage> {
       onTap: () {
         setState(() {
           print('MyButton was tapped!');
-          color =
-              Colors.primaries[math.Random().nextInt(Colors.primaries.length)];
+          color = Colors
+              .primaries[math.Random().nextInt(Colors.primaries.length)]
+              .withOpacity(0.5);
           _showButton();
         });
       },
