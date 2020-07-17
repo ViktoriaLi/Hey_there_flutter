@@ -56,7 +56,6 @@ class HeyTherePageState extends State<HeyTherePage> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          print('MyButton was tapped!');
           color = Colors
               .primaries[math.Random().nextInt(Colors.primaries.length)]
               .withOpacity(0.5);
