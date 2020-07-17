@@ -4,7 +4,7 @@ import 'OpenUrl.dart';
 
 class CVPage extends StatelessWidget {
   var _texts = [
-    'I have 1 year of non-commercial experience in iOS development, also passed internship and working on a freelance project',
+    'I have 1 year of non-commercial experience in iOS development, also completed internship and working on a freelance project',
     '1-year experience with C programming',
     '2 years in software testing in commercial projects',
     'Currently, I\'m interested to grow as professional in native or cross-platform mobile development'
@@ -97,7 +97,8 @@ class CVPage extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
           itemCount: _texts.length,
-          itemBuilder: (context, index) {
+          itemBuilder: (conte
+          xt, index) {
             return Column(
               children: <Widget>[
                 ListTile(
