@@ -1,16 +1,13 @@
-# hey_there_viktoriali
+# Hey there!
 
-A new Flutter project.
+My first Flutter app
 
-## Getting Started
+## Requirements:
 
-This project is a starting point for a Flutter application.
+1. Display "Hey there" in the middle of the screen
+2. Change background color by tapping anywhere on the screen
 
-A few resources to get you started if this is your first Flutter project:
+## Additional:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Custom app icon
+2. The second screen that contains image, icon buttons, list view
