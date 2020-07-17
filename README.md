@@ -11,3 +11,4 @@ My first Flutter app
 
 1. Custom app icon
 2. The second screen that contains image, icon buttons, list view
+  **A button that opens the second screen will be visible every 3 taps on the first screen
