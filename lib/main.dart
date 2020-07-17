@@ -12,6 +12,7 @@ class HeyThereApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Hey there!',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -43,10 +44,6 @@ class HeyTherePageState extends State<HeyTherePage> {
         title: Text(widget.title, style: TextStyle(color: Colors.white)),
         actions: [
           Container(
-            decoration: const ShapeDecoration(
-              color: Colors.white,
-              shape: CircleBorder(),
-            ),
             child: bonusButton,
           ),
         ],
@@ -97,13 +94,11 @@ class HeyTherePageState extends State<HeyTherePage> {
     setState(() {
       _counter++;
       if (_counter % 3 == 0) {
-        bonusButton = Container(
-          child: IconButton(
-            icon: Icon(Icons.face),
-            iconSize: 32,
-            color: Colors.black,
-            onPressed: _openCV,
-          ),
+        bonusButton = IconButton(
+          icon: Icon(Icons.face),
+          iconSize: 40,
+          color: Colors.white,
+          onPressed: _openCV,
         );
       } else {
         bonusButton = null;

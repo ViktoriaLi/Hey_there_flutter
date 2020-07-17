@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'OpenUrl.dart';
 
 class CVPage extends StatelessWidget {
-  var texts = [
+  var _texts = [
     'I have 1 year of non-commercial experience in iOS development, also passed internship and working on a freelance project',
     '1-year experience with C programming',
     '2 years in software testing in commercial projects',
     'Currently, I\'m interested to grow as professional in native or cross-platform mobile development'
   ];
 
-  var urlOpener = OpenUrl();
+  var _urlOpener = OpenUrl();
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +21,25 @@ class CVPage extends StatelessWidget {
         ),
         title: Text("Short review", style: TextStyle(color: Colors.white)),
       ),
-      body: Information(),
+      body: _Information(),
     );
   }
 
-  Widget Information() {
+  Widget _Information() {
     return Container(
       padding: const EdgeInsets.all(8),
       child: Column(
         children: <Widget>[
-          MyPhoto(),
-          SocialButtons(),
-          Summary(),
-          ExperienceList(),
+          _MyPhoto(),
+          _SocialButtons(),
+          _Summary(),
+          _ExperienceList(),
         ],
       ),
     );
   }
 
-  Widget MyPhoto() {
+  Widget _MyPhoto() {
     return Container(
       height: 250,
       child: Image(
@@ -49,7 +49,7 @@ class CVPage extends StatelessWidget {
     );
   }
 
-  Widget SocialButtons() {
+  Widget _SocialButtons() {
     return Container(
       padding: const EdgeInsets.only(bottom: 20),
       child: Row(
@@ -57,13 +57,13 @@ class CVPage extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: Image.asset('images/github_icon.png'),
-            onPressed: urlOpener.openGithub,
+            onPressed: _urlOpener.openGithub,
             iconSize: 48,
             color: Colors.white,
           ),
           IconButton(
             icon: Image.asset('images/linkedin_icon.png'),
-            onPressed: urlOpener.openLinkedin,
+            onPressed: _urlOpener.openLinkedin,
             iconSize: 48,
           ),
           Ink(
@@ -73,7 +73,7 @@ class CVPage extends StatelessWidget {
             ),
             child: IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: urlOpener.openPortfolio,
+              onPressed: _urlOpener.openPortfolio,
               iconSize: 30,
               color: Colors.white,
             ),
@@ -83,7 +83,7 @@ class CVPage extends StatelessWidget {
     );
   }
 
-  Widget Summary() {
+  Widget _Summary() {
     return Container(
       padding: const EdgeInsets.only(bottom: 20),
       child: Text(
@@ -93,15 +93,15 @@ class CVPage extends StatelessWidget {
     );
   }
 
-  Widget ExperienceList() {
+  Widget _ExperienceList() {
     return Expanded(
       child: ListView.builder(
-          itemCount: texts.length,
+          itemCount: _texts.length,
           itemBuilder: (context, index) {
             return Column(
               children: <Widget>[
                 ListTile(
-                  title: Text(texts[index]),
+                  title: Text(_texts[index]),
                 ),
                 Divider(),
               ],
@@ -110,7 +110,7 @@ class CVPage extends StatelessWidget {
     );
   }
 
-  Widget ListItem(String text) {
+  Widget _ListItem(String text) {
     return Container(
       height: 50,
       color: Colors.amber[100],
