@@ -97,8 +97,7 @@ class CVPage extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
           itemCount: _texts.length,
-          itemBuilder: (conte
-          xt, index) {
+          itemBuilder: (context, index) {
             return Column(
               children: <Widget>[
                 ListTile(
